@@ -1,8 +1,5 @@
 
 // utils.ts
-
-import { Producto } from "./Modelo";
-
 export async function api<T>(url: string): Promise<T> {
     const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}${url}`;
     const response = await fetch(urlCompleta);
@@ -36,7 +33,7 @@ export async function agregarProducto(params: ProductoParams): Promise<ProductoR
     }
 }
 
-export async function eliminarCiudad(params: ProductoParams): Promise<ProductoRespuesta> {
+export async function eliminarProducto(params: ProductoParams): Promise<ProductoRespuesta> {
     const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/producto`;
 
     const response = await fetch(urlCompleta, {

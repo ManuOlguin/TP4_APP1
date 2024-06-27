@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { eliminarCiudad } from "../app/utils";
+import { eliminarProducto } from "../app/utils";
 import { useUpdateTrigger } from "../app/context";
 
 interface eliminarProps {
@@ -35,7 +35,7 @@ export default function PopUpEliminar(props: eliminarProps) {
       
     setTimeout(() => {
       const params: ProductoParams = { meli_id };
-      eliminarCiudad(params);
+      eliminarProducto(params);
       setTriggerUpdate(!triggerUpdate);
       props.setShowPopupEliminar(false); 
     }, 500); 
