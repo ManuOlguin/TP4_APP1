@@ -1,6 +1,8 @@
-import { Ciudad } from "./Modelo";
 
 // utils.ts
+
+import { Producto } from "./Modelo";
+
 export async function api<T>(url: string): Promise<T> {
     const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}${url}`;
     const response = await fetch(urlCompleta);
@@ -10,12 +12,11 @@ export async function api<T>(url: string): Promise<T> {
     return await (response.json() as Promise<T>);
 }
 
+export interface ProductoParams { meli_id: string };
+export interface ProductoRespuesta { mensaje: string }
 
-export interface AgregarCiudadParams { nombre: string };
-export interface AgregarCiudadRespuesta { mensaje: string }
-
-export async function agregarCiudad(params: AgregarCiudadParams): Promise<AgregarCiudadRespuesta> {
-    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/ciudad/agregar`;
+export async function agregarProducto(params: ProductoParams): Promise<ProductoRespuesta> {
+    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/producto`;
 
     const response = await fetch(urlCompleta, {
         method: 'POST',
@@ -27,11 +28,31 @@ export async function agregarCiudad(params: AgregarCiudadParams): Promise<Agrega
 
     if (!response.ok) {
         var body = await response.text();
-        return { mensaje: `Error agregando ciudad: ${body}` };
+        return { mensaje: `Error agregando producto: ${body}` };
     }
     else {
-        var ciudad = await (response.json() as Promise<Ciudad>);
-        return { mensaje: `Ciudad ${ciudad.nombre} agregada con exito!` };
+        console.log(response)
+        return { mensaje: `agregada con exito!` };
+    }
+}
+
+export async function eliminarCiudad(params: ProductoParams): Promise<ProductoRespuesta> {
+    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/producto`;
+
+    const response = await fetch(urlCompleta, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(params)
+    });
+
+    if (!response.ok) {
+        var body = await response.text();
+        return { mensaje: `Error eliminando producto: ${body}` };
+    }
+    else {
+        return { mensaje: `Producto eliminado con exito!` };
     }
 }
 

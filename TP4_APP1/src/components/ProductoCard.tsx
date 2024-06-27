@@ -9,19 +9,13 @@ export interface ProductoProps {
     producto: Producto;
 }
 
-function EmojiDeTemperatura(temperatura: number): string {
-  if (temperatura < 0) return "☃️";
-  else if (temperatura <= 15) return "🥶";
-  else if (temperatura <= 30) return "😊";
-  else return "🥵";
-}
 
 export default function ProductoCard(props: ProductoProps) {
   const [showPopup, setShowPopup] = useState(false);
 const togglePopup = () => setShowPopup(!showPopup);
   return (
     <>
-      <div className="bg-white shadow-xl rounded-md px-2">
+      <div className="bg-white shadow-xl w-full rounded-md px-2">
         
         <div className="flex justify-between">
           
@@ -34,6 +28,6 @@ const togglePopup = () => setShowPopup(!showPopup);
         <p className="mb-10 text-5xl center text-center">
         </p>
       </div>
-       {showPopup && <PopupEliminar id={props.producto.id} setShowPopupEliminar={setShowPopup} nombre={props.producto.nombre} />}    </>
+       {showPopup && <PopupEliminar meli_id={props.producto.meli_id} setShowPopupEliminar={setShowPopup} nombre={props.producto.nombre} />}    </>
   );
 }
