@@ -1,7 +1,7 @@
 
 // utils.ts
 export async function api<T>(url: string): Promise<T> {
-    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}${url}`;
+    const urlCompleta = `${process.env.URL}${url}`;
     const response = await fetch(urlCompleta);
     if (!response.ok) {
         throw new Error(response.statusText);
@@ -13,7 +13,7 @@ export interface ProductoParams { meli_id: string };
 export interface ProductoRespuesta { mensaje: string }
 
 export async function agregarProducto(params: ProductoParams): Promise<ProductoRespuesta> {
-    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/producto`;
+    const urlCompleta = `${process.env.URL}/v1/producto`;
 
     const response = await fetch(urlCompleta, {
         method: 'POST',
@@ -34,7 +34,7 @@ export async function agregarProducto(params: ProductoParams): Promise<ProductoR
 }
 
 export async function eliminarProducto(params: ProductoParams): Promise<ProductoRespuesta> {
-    const urlCompleta = `${process.env.NEXT_PUBLIC_URL_API}/v1/producto`;
+    const urlCompleta = `${process.env.URL}/v1/producto`;
 
     const response = await fetch(urlCompleta, {
         method: 'DELETE',
