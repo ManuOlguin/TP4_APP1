@@ -54,4 +54,3 @@ export async function eliminarProducto(params: ProductoParams): Promise<Producto
         return { mensaje: `Producto eliminado con exito!` };
     }
 }
-

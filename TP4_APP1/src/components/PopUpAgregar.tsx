@@ -18,8 +18,6 @@ function agregarProductoHandler(meli_id: string) {
     agregarProducto(params);
 }
 const extractIdFromUrl = (url: string): string | null => {
-    const regex = /\/p\/MLA.*mercadolibre\.com|mercadolibre\.com.*\/p\/MLA/;
-    const regex2 = /articulo\.mercadolibre\.com.*\/MLA-\d+/;
 
     const match = url.match(/\/p\/(MLA\d+)/);
     const match2 = url.match(/\/(MLA-\d+)-/); 
